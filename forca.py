@@ -33,7 +33,7 @@ def jogar():
         imprime_mensagem_perdedor(palavra_secreta)
 
 
-def desenha_forca(erros):
+def desenha_forca(erros):	#Desenha a forca.
     print("  _______     ")
     print(" |/      |    ")
 
