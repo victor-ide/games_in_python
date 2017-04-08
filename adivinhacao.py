@@ -9,12 +9,17 @@ def jogar():
     numero_secreto = random.randrange(1,101)	#Cria o numero secreto com a função randrange que vai de 0 a 100.
     total_de_tentativas = 0
     pontos = 1000
+    nivel = 0
 
-    print("Qual nível de dificuldade?")
-    print("(1) Fácil (2) Médio (3) Difícil")
-
-    nivel = int(input("Defina o nível: "))
-
+# Valida entrada de nível
+    while not 1 <= nivel <= 3:
+        try:
+            print("Qual nível de dificuldade?")
+            print("(1)Fácil\n(2)Médio\n(3)Difícil")
+            nivel = int(input("Defina o nível: "))
+        except ValueError:
+            print("Por favor, insira um número!")
+		
     if(nivel == 1):
         total_de_tentativas = 20
     elif(nivel == 2):
@@ -22,13 +27,16 @@ def jogar():
     else:
         total_de_tentativas = 5
 
+
     for rodada in range(1, total_de_tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, total_de_tentativas))
-
-        chute_str = input("Digite um número entre 1 e 100: ")
-        print("Você digitou " , chute_str)
-        chute = int(chute_str)
-
+        try:
+            print("Tentativa {} de {}".format(rodada, total_de_tentativas))
+            chute = int(input("Digite um número entre 1 e 100: "))
+        except ValueError:
+            print("Digite somente números!")
+        else:
+            print("Você digitou " , chute)
+            
         if(chute < 1 or chute > 100):
             print("Você deve digitar um número entre 1 e 100!")
             continue
